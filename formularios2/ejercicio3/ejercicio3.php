@@ -1,13 +1,15 @@
-<?php 
+<?php
 
 include "./libs/bGeneral.php";
+include "./libs/dinamicos.php";
 
 cabecera();
 
-$nombre = "";
 $errors = [];
-$provincias = ["valencia", "alicante", "castellon"];
-$aficiones = [];
+$nombre = "";
+$premium = "";
+$provincias = ["Valencia", "Alicante", "Castellon"];
+$aficiones = ["Cine", "Deporte", "Viajar", "Videojuegos"];
 
 
 if (!isset($_REQUEST['bAceptar'])) {
@@ -15,22 +17,21 @@ if (!isset($_REQUEST['bAceptar'])) {
 } else {
 
     $nombre = recoge("nombre");
-    $provincia = recoge("provincia");
-    $aficiones = recoge("aficiones");
-    $check = recoge("check");
+    $provincia = recoge("provincias");
+    $aficionesGet = recogeArray("aficiones");
 
-    $check = ($check == "on") ? true : false ;
+    echo "$provincia";
 
     cTexto($nombre, "nombre", $errors);
-    cRadio($provincia,"provincia", $errors, $provincias);
+    cRadio($provincia, "provincia", $errors, $provincias);
+    cCheck($aficionesGet, "aficiones", $errors, $aficiones);
 
 
     if (!empty($errors)) {
-        include "./formulario.php";    
+        include "./formulario.php";
     } else {
-        
+        $serializeAficiones = serialize($aficionesGet);
+        header("location:correcto.php?nombre=$nombre&provincias=$provincia&aficiones=$serializeAficiones");
     }
-    
-
 }
 pie();
