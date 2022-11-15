@@ -3,7 +3,7 @@
 // * funcion para pintar los checkbox
 function printCheck(array $valores, string $nombre){
     foreach ($valores as $valor) {
-        echo '<label required> <input type="checkbox" name="' . $nombre . '[] " value="' . $valor . '">' . $valor . ' </label><br>';
+        echo '<input type="checkbox" name="' . $nombre . '[] " value="' . $valor . '">' . $valor . '<br>';
     }
 }
 

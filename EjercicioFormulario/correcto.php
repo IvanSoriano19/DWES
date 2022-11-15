@@ -15,9 +15,9 @@ $file = recoge("file");
 
 echo "El titulo de la pelicula es " . $titulo . "<br>";
 
+print_r($generos);
 // if (is_array($unGeneros) || is_object($unGeneros)) {
     foreach (unserialize($generos) as $genero) {
-        echo "<script>console.log('Debug Objects: " . $generos . "' );</script>";
         echo "<p>$genero</p>";
     }
 // }
@@ -28,7 +28,7 @@ echo "El titulo de la pelicula es " . $titulo . "<br>";
 /**
  * Comprobamos si lo que se ha enviado es un fichero para poderlo mostrar
  */
-////echo (is_file ($file))?"Tu fichero $file se ha subido con éxito <br> <img src=\"$file\">":"";
+echo (is_file ($file))?"Tu fichero $file se ha subido con éxito <br> <img src=\"$file\">":"";
 
 
 

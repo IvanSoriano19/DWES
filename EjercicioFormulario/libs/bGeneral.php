@@ -178,7 +178,6 @@ function recogeArray(string $var): array
         foreach ($_REQUEST[$var] as $valor)
             $array[] = strip_tags(sinEspacios($valor));
     }
-
     return $array;
 }
 
@@ -316,6 +315,7 @@ function cFile(string $nombre, array &$errores, array $extensionesValidas, strin
         return true;
     // En cualquier otro caso se comprueban los errores del servidor 
     if ($_FILES[$nombre]['error'] != 0) {
+        print_r($_FILES);
         $errores["$nombre"] = "Error al subir el archivo " . $nombre . ". Prueba de nuevo";
         return false;
     } else {
@@ -324,7 +324,7 @@ function cFile(string $nombre, array &$errores, array $extensionesValidas, strin
         /*
              * Guardamos nombre del fichero en el servidor
             */
-        $directorioTemp = $_FILES['imagen']['tmp_name'];
+        $directorioTemp = $_FILES[$nombre]['tmp_name'];
         /*
              * Calculamos el tamaño del fichero
             */
@@ -376,11 +376,11 @@ function cFile(string $nombre, array &$errores, array $extensionesValidas, strin
 
                     return $nombreCompleto;
                 } else {
-                    $errores["imagen"] = "Ha habido un error al subir el fichero";
+                    $errores["imagen"] = "Ha habido un error al subir el fichero 111";
                     return false;
                 }
             } else {
-                $errores["imagen"] = "Ha habido un error al subir el fichero";
+                $errores["imagen"] = "Ha habido un error al subir el fichero3333";
                 return false;
             }
         }
