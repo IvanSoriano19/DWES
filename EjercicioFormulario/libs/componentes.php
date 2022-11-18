@@ -2,9 +2,11 @@
 
 // * funcion para pintar los checkbox
 function printCheck(array $valores, string $nombre){
+    echo "<label required>";
     foreach ($valores as $valor) {
-        echo '<input type="checkbox" name="' . $nombre . '[] " value="' . $valor . '">' . $valor . '<br>';
+        echo '<input type="checkbox" name="'.$nombre.'[]" value='.$valor.'>'.$valor.'<label>';
     }
+    echo "</label>";
 }
 
 // * funcion para crear el desplegable

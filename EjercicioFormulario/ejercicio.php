@@ -16,14 +16,14 @@ $sinopsis = "";
 if (!isset($_REQUEST['bAceptar'])) {
     require("formulario.php");
 } else {
-    
+
     $titulo = recoge("titulo");
     // $sinopsis = recogeArea("sinopsis");
-    $generosGet = recogeArray("generos");
+    $datosGeneros = recogeArray("generos");
 
     $error = false;
 
-    cCheck($generosGet, "generos", $errores, $generos);
+    cCheck($datosGeneros, "generos", $errores, $generos);
 
     cTexto($titulo, "titulo", $errores, 40);
     // cTexto($sinopsis, "sinopsis", $errores, 400);
@@ -32,14 +32,15 @@ if (!isset($_REQUEST['bAceptar'])) {
 
         $file = cfile("imagen",  $errores, $extensionesValidas, $rutaImagenes, $maxFichero);
 
-        
 
-        if (empty($errores)) {
-            $serializeGenero=serialize($generosGet);
+
+        if (!empty($errores)) {
+            require("formulario.php");
+            
+        } else {
+            $serializeGeneros = serialize($datosGeneros);
             header("location:correcto.php?titulo=$titulo&generos=$serializeGeneros&file=$file");
             //&sinopsis=$sinopsis
-        } else {
-            require("formulario.php");
         }
     } else {
         require("formulario.php");

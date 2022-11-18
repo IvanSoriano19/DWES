@@ -6,14 +6,14 @@ foreach ($errores as $error) {
 <form ACTION="" METHOD="post" enctype="multipart/form-data">
 
     <p>Titulo: <input type="text" name="titulo" required></p>
-    <p>Fecha de estreno: <input type="date" name="fecha" id=""></p>
+    <p>Fecha de estreno: <input type="text" name="fecha" id="" placeholder="dd-mm-aaaa"></p>
 
     <p>
-        <label require>
+
         <?php
         printCheck($generos, "generos");
         ?>
-        </label>
+        
     </p>
     <p>Duracion de la pelicula <input type="number" name="duracion" placeholder="En minutos"></p>
     <p>
@@ -21,7 +21,7 @@ foreach ($errores as $error) {
         printDesplegable($paises, "pais");
         ?>
     </p>
-    <p>Sinopsis: <br><textarea name="sinopsis" cols="30" rows="5" placeholder="Sinopsis" ></textarea></p>
+    <p>Sinopsis: <br><textarea name="sinopsis" cols="30" rows="5" placeholder="Sinopsis"></textarea></p>
 
 <br>
     Foto cartel: <input type="file" name="imagen" id="imagen" />

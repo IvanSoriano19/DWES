@@ -389,8 +389,9 @@ function cFile(string $nombre, array &$errores, array $extensionesValidas, strin
 
 // Todo: crear funcion para la fecha
 
-function cFecha()
+function cFecha(array $fecha)
 {
+
 }
 // todo: crear funcion para la sinopsis
     ?>
