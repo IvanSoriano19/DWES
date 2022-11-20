@@ -18,20 +18,27 @@ if (!isset($_REQUEST['bAceptar'])) {
 } else {
 
     $titulo = recoge("titulo");
-    // $sinopsis = recogeArea("sinopsis");
+    $duracion = recoge("duracion");
+    $sinopsis = recogeArea("sinopsis");
     $datosGeneros = recogeArray("generos");
+    $pais = recoge("pais");
+    $fecha = recogeNormal("fecha");
 
     $error = false;
 
     cCheck($datosGeneros, "generos", $errores, $generos);
+    cNum($duracion, "duracion", $errores);
 
     cTexto($titulo, "titulo", $errores, 40);
-    // cTexto($sinopsis, "sinopsis", $errores, 400);
+    cTexto($pais, "pais", $errores, 40);
+
+    
 
     if (empty($errores)) {
 
-        $file = cfile("imagen",  $errores, $extensionesValidas, $rutaImagenes, $maxFichero);
-
+        $file = cfile("imagen",  $errores, $extensionesValidas, $rutaImagenes, $maxFichero, true);
+        $imagenReparto1 = cfile("imagenReparto1",  $errores, $extensionesValidas, $rutaImagenes, $maxFichero, false);
+        $imagenReparto2 = cfile("imagenReparto2",  $errores, $extensionesValidas, $rutaImagenes, $maxFichero, false);
 
 
         if (!empty($errores)) {
@@ -39,8 +46,7 @@ if (!isset($_REQUEST['bAceptar'])) {
             
         } else {
             $serializeGeneros = serialize($datosGeneros);
-            header("location:correcto.php?titulo=$titulo&generos=$serializeGeneros&file=$file");
-            //&sinopsis=$sinopsis
+            header("location:correcto.php?titulo=$titulo&fecha=$fecha&generos=$serializeGeneros&duracion=$duracion&pais=$pais&sinopsis=$sinopsis&file=$file&imagenReparto1=$imagenReparto1&imagenReparto2=$imagenReparto2");
         }
     } else {
         require("formulario.php");

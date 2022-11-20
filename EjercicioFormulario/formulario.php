@@ -24,7 +24,7 @@ foreach ($errores as $error) {
     <p>Sinopsis: <br><textarea name="sinopsis" cols="30" rows="5" placeholder="Sinopsis"></textarea></p>
 
 <br>
-    Foto cartel: <input type="file" name="imagen" id="imagen" />
+    Foto cartel: <input type="file" name="imagen" id="imagen" required/>
     <br>
     <p>
     Foto reparto 1: <input type="file" name="imagenReparto1" id="imagenReparto1"/>

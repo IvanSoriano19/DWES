@@ -40,52 +40,11 @@ function pie()
  * @return string
  */
 
-function sinTildes($frase): string
+function sinTildes($frase)
 {
-    $no_permitidas = array(
-        "á",
-        "é",
-        "í",
-        "ó",
-        "ú",
-        "Á",
-        "É",
-        "Í",
-        "Ó",
-        "Ú",
-        "à",
-        "è",
-        "ì",
-        "ò",
-        "ù",
-        "À",
-        "È",
-        "Ì",
-        "Ò",
-        "Ù"
-    );
-    $permitidas = array(
-        "a",
-        "e",
-        "i",
-        "o",
-        "u",
-        "A",
-        "E",
-        "I",
-        "O",
-        "U",
-        "a",
-        "e",
-        "i",
-        "o",
-        "u",
-        "A",
-        "E",
-        "I",
-        "O",
-        "U"
-    );
+
+    $no_permitidas = array("á", "é", "í", "ó", "ú", "Á", "É", "Í", "Ó", "Ú", "à", "è", "ì", "ò", "ù", "À", "È", "Ì", "Ò", "Ù");
+    $permitidas = array("a", "e", "i", "o", "u", "A", "E", "I", "O", "U", "a", "e", "i", "o", "u", "A", "E", "I", "O", "U");
     $texto = str_replace($no_permitidas, $permitidas, $frase);
     return $texto;
 }
@@ -114,10 +73,13 @@ function sinEspacios($frase)
  * @param string $frase
  * @param string $espacio
  * @return string
-*/ 
+ */
 
-function saltosLinea($frase){
-    $texto = str_replace(array("\r\n", "\n\r", "\r", "\n"), "<br>", $frase);
+
+
+function saltosLinea($frase)
+{
+    $texto = str_replace(PHP_EOL, "<br>", $frase);
     return $texto;
 }
 
@@ -141,6 +103,19 @@ function recoge(string $var)
 
     return $tmp;
 }
+
+
+function recogeNormal(string $var)
+{
+    if (isset($_REQUEST[$var]) && (!is_array($_REQUEST[$var]))) {
+        $tmp = $_REQUEST[$var];
+    } else
+        $tmp = "";
+
+    return $tmp;
+}
+
+
 
 /**
  * Funcion recogeArea
@@ -387,11 +362,27 @@ function cFile(string $nombre, array &$errores, array $extensionesValidas, strin
     }
 }
 
-// Todo: crear funcion para la fecha
+// TODO: crear funcion para la fecha
 
-function cFecha(array $fecha)
+function cFecha(String $fecha)
 {
+    $array = [];
 
+    if (isset($_REQUEST[$fecha])) {
+        $array = explode("-", $fecha);
+        echo "<script>console.log('Debug Objects:  $fecha  ' );</script>";
+        if (is_array($array) ) {
+            $date = date("$array[1],$array[0],$array[2]");
+        }
+    }
+    return $date;
 }
-// todo: crear funcion para la sinopsis
+
+// funcion para pasar de minutos a horas
+
+function minToHour(String $num)
+{
+    $hour = $num / 60;
+    return $hour;
+}
     ?>

@@ -5,7 +5,7 @@ $extensionesValidas=["jpeg","gif","jpg"];
 
 $maxFichero=300000;
 
-$generos = ["Musical", "Romance", "Historico", "Policiaca"];
+$generos = ["Musical", "Romance", "Historico", "Policiaca", "Satira", "Animacion"];
 
-$paises = ["España", "Francia", "Alemania", "EEUU", "Reino Unido", "Japon", "Italia"];
+$paises = ["España", "Congo", "Alemania", "EEUU", "Reino Unido", "Japon", "Italia"];
 ?>
