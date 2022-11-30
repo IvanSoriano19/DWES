@@ -5,6 +5,7 @@ Todos los trabajos del curso de Desarrollo Web y Entorno Servidor
 ## Tecnologías
 
 * **PHP**
+* **SQL**
 
 ## Editores de código
 
