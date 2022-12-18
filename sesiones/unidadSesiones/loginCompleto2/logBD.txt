@@ -1,0 +1,11 @@
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'heike' for key 'user_2'##Código: 23000  0.55401000 1639531006
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'prUEbA' for key 'user_2'##Código: 23000  0.82757100 1639531194
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'prUEbA' for key 'user_2'##Código: 23000  0.97005000 1639531364
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'heike' for key 'user_2'##Código: 23000  0.97406000 1639531373
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'prUEbA' for key 'user_2'##Código: 23000  0.41611200 1639531913
+SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1##Código: 21S01  0.22497000 1639532023
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'heike1w@gmail.com' for key 'uni'##Código: 23000  0.59519300 1639532382
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'heike1w@gmail.com' for key 'uni'##Código: 23000  0.96062200 1639532451
+SQLSTATE[HY000] [2002] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión.
+##Código: 2002  0.41761600 1669313484
+SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)##Código: 1045  0.27132000 1669809241
