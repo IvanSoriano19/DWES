@@ -1,0 +1,25 @@
+
+/* navbar menu */
+.menu{
+	background-color: rgb(42, 125, 233);
+    box-shadow: 2px 2px 5px rgba(8, 8, 8, 0.767); /*Sombreado*/
+}
+
+.menu a {
+	color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration: none;
+}
+
+.menu a:hover { /*Al pasar el raton por encima del menu cambia de color*/
+    background-color:rgb(187, 228, 245);
+	color: black;
+    transition: all .3s;
+}
+
+/* FOOTER */
+.pie {
+	background-color: rgb(42, 125, 233);
+	color: white;
+	box-shadow: 2px 2px 5px rgba(8, 8, 8, 0.767); /*Sombreado*/	
+}

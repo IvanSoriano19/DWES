@@ -25,7 +25,7 @@
 	
 	<?php	
 	if (!isset($menu)) {
-	    $menu = 'menuInvitado.php';
+		$menu = 'menuInvitado.php';
 	}
 	include $menu;
     ?>
