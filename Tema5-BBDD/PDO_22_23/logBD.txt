@@ -1,0 +1,1 @@
+SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'usuario' already exists## Fichero: C:\xampp\htdocs\DWES\Tema5-BBDD\PDO_22_23\crearBD.php## Línea: 27##Código: 42S01##Instante: 0.85361400 1673894901

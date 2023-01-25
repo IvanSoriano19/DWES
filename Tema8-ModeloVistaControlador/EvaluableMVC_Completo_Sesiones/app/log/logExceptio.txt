@@ -1,0 +1,6 @@
+SQLSTATE[HY000] [1049] Unknown database 'biblioteca'0.76644400 1674213781
+SQLSTATE[HY000] [1049] Unknown database 'biblioteca'0.10927700 1674213835
+SQLSTATE[HY000] [1049] Unknown database 'biblioteca'0.71035100 1674213841
+SQLSTATE[HY000] [1049] Unknown database 'biblioteca'0.24566500 1674213847
+SQLSTATE[HY000] [1049] Unknown database 'biblioteca'0.25351000 1674213862
+SQLSTATE[HY000] [1049] Unknown database 'biblioteca'0.11840900 1674213864
