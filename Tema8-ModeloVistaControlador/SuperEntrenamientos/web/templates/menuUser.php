@@ -1,5 +1,5 @@
 
-<h3 class="text">Bienvenido <?php echo $_SESSION['nombreUsuario']?></h3>
+<h3 class="me-0 text">Bienvenido <?php echo $_SESSION['nombreUsuario']?></h3>
 <div class="container-fluid menu text-center p-3 my-4">
 	<div class="container">
 		<div class="row">

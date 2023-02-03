@@ -1,0 +1,5 @@
+Unsupported operand types: string + string0.93543700 1675366805
+Unsupported operand types: string + string0.60194200 1675366813
+PDOStatement::bindParam(): Argument #2 ($var) cannot be passed by reference0.80183200 1675366873
+PDOStatement::bindParam(): Argument #2 ($var) cannot be passed by reference0.88032700 1675367069
+PDOStatement::bindParam(): Argument #2 ($var) cannot be passed by reference0.68233300 1675410085

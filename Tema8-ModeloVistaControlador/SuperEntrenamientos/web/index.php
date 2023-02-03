@@ -5,7 +5,7 @@ require_once __DIR__ . '/../app/libs/Config.php';
 require_once __DIR__ . '/../app/libs/bGeneral.php';
 require_once __DIR__ . '/../app/libs/bSeguridad.php';
 require_once __DIR__ . '/../app/modelo/classModelo.php';
-require_once __DIR__ . '/../app/modelo/classBiblioteca.php';
+require_once __DIR__ . '/../app/modelo/classEntrenamientos.php';
 require_once __DIR__ . '/../app/controlador/Controller.php';
 
 session_start(); // Se inicia la sesion
@@ -26,13 +26,21 @@ $map = array(
     'salir' => array('controller' =>'Controller', 'action' =>'salir', 'nivel_usuario'=>0),
     'error' => array('controller' =>'Controller', 'action' =>'error', 'nivel_usuario'=>0),
     'iniciarSesion' => array('controller' =>'Controller', 'action' =>'iniciarSesion', 'nivel_usuario'=>0),
-    'registro' => array('controller' =>'Controller', 'action' =>'registro', 'nivel_usuario'=>0),      
-    'listarLibros' => array('controller' =>'Controller', 'action' =>'listarLibros', 'nivel_usuario'=>0),
-    'verLibro' => array('controller' =>'Controller', 'action' =>'verLibro', 'nivel_usuario'=>0),
+    'registro' => array('controller' =>'Controller', 'action' =>'registro', 'nivel_usuario'=>0),    
+    //TODO: MODIFICAR CONTROLADOR  
+    'listarEjercicios' => array('controller' =>'Controller', 'action' =>'listarEjercicios', 'nivel_usuario'=>0),
+    //TODO: MODIFICAR CONTROLADOR  
+    'verEjercicio' => array('controller' =>'Controller', 'action' =>'verEjercicio', 'nivel_usuario'=>0),
+    //TODO: MODIFICAR CONTROLADOR  
     'buscarPorTitulo' => array('controller' =>'Controller', 'action' =>'buscarPorTitulo', 'nivel_usuario'=>1),
+    //TODO: MODIFICAR CONTROLADOR  
     'buscarPorAutor' => array('controller' =>'Controller', 'action' =>'buscarPorAutor', 'nivel_usuario'=>1),
+    //TODO: MODIFICAR CONTROLADOR  
     'buscarPorEditorial' => array('controller' =>'Controller', 'action' =>'buscarPorEditorial', 'nivel_usuario'=>1),
-    'insertarL' => array('controller' =>'Controller', 'action' =>'insertarL', 'nivel_usuario'=>2)  
+    //TODO: CREAR CONTROLADOR  MIS EJERCICIOS
+
+    
+    'insertarEjercicio' => array('controller' =>'Controller', 'action' =>'insertarEjercicios', 'nivel_usuario'=>2)  
 );
 
 // Parseo de la ruta

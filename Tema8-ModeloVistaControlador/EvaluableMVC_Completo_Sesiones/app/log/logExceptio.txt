@@ -4,3 +4,5 @@ SQLSTATE[HY000] [1049] Unknown database 'biblioteca'0.71035100 1674213841
 SQLSTATE[HY000] [1049] Unknown database 'biblioteca'0.24566500 1674213847
 SQLSTATE[HY000] [1049] Unknown database 'biblioteca'0.25351000 1674213862
 SQLSTATE[HY000] [1049] Unknown database 'biblioteca'0.11840900 1674213864
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 10.10673800 1675366742
+SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 10.31922400 1675366750

@@ -36,7 +36,7 @@ class Controller
 
         $params = array(
             'mensaje' => 'Bienvenido al banco de entrenamientos',
-            'mensaje2' => 'Aquí encontrarás una gran variedad de ejercicio para tus entrenamientos',
+            'mensaje2' => 'Aquí encontrarás una gran variedad de ejercicios para tus entrenamientos',
             'fecha' => date('d-m-Y')
         );
         $menu = $this->cargaMenu();
@@ -183,15 +183,15 @@ class Controller
     }
 
 
-    public function listarLibros()
+    public function listarEjercicios()
     {
         try {
             $m = new Entrenamientos();
             $params = array(
-                'libros' => $m->listarLibros(),
+                'nombre' => $m->listarEjercicios(),
             );
-            if (!$params['libros'])
-                $params['mensaje'] = "No hay libros que mostrar.";
+            if (!$params['nombre'])
+                $params['mensaje'] = "No hay ejercicios que mostrar.";
         } catch (Exception $e) {
             error_log($e->getMessage() . microtime() . PHP_EOL, 3, "../app/log/logExceptio.txt");
             header('Location: index.php?ctl=error');
@@ -202,19 +202,19 @@ class Controller
 
         $menu = $this->cargaMenu();
 
-        require __DIR__ . '/../../web/templates/mostrarLibros.php';
+        require __DIR__ . '/../../web/templates/mostrarEjercicios.php';
     }
 
 
-    public function verLibro()
+    public function verEjercicio()
     {
         try {
-            if (!isset($_GET['idLibro'])) {
+            if (!isset($_GET['id_ejercicio'])) {
                 throw new Exception('Página no encontrada.');
             }
-            $idLibro = recoge('idLibro');
+            $id_ejercicio = recoge('id_ejercicio');
             $m = new Entrenamientos();
-            $params['libros'] = $m->verLibroB($idLibro);
+            $params['ejercicios'] = $m->verEjercicio($id_ejercicio);
         } catch (Exception $e) {
             error_log($e->getMessage() . microtime() . PHP_EOL, 3, "../app/log/logExceptio.txt");
             header('Location: index.php?ctl=error');
@@ -225,7 +225,7 @@ class Controller
 
         $menu = $this->cargaMenu();
 
-        require __DIR__ . '/../../web/templates/verLibro.php';
+        require __DIR__ . '/../../web/templates/verEjercicio.php';
     }
 
 
@@ -310,47 +310,47 @@ class Controller
     }
 
 
-    public function insertarL()
+    public function insertarEjercicios()
     {
         try {
             $params = array(
-                'titulo' => '',
-                'autor' => '',
-                'editorial' => '',
-                'anyo' => ''
+                'nombre' => '',
+                'descripcion' => '',
+                'grupoMuscular' => '',
+                'grupoCuerpo' => ''
             );
             $errores = array();
-            if (isset($_POST['bInsertarL'])) {
-                $titulo = recoge('titulo');
-                $autor = recoge('autor');
-                $editorial = recoge('editorial');
-                $anyo = recoge('anyo');
+            if (isset($_POST['bInsertarEjercicio'])) {
+                $nombre = recoge('nombre');
+                $descripcion = recoge('descripcion');
+                $grupoMuscular = recoge('grupoMuscular');
+                $grupoCuerpo = recoge('grupoCuerpo');
                 // Comprobar campos formulario. Aqui va la validación con las funciones de bGeneral
-                cTexto($titulo, "titulo", $errores);
-                cTexto($autor, "autor", $errores);
-                cTexto($editorial, "editorial", $errores);
-                cTexto($anyo, "anyo", $errores);
+                cTexto($nombre, "nombre", $errores);
+                cTexto($descripcion, "descripcion", $errores);
+                cTexto($grupoMuscular, "grupoMuscular", $errores);
+                cTexto($grupoCuerpo, "grupoCuerpo", $errores);
 
                 if (empty($errores)) {
                     // Si no ha habido problema creo modelo y hago inserción
                     $m = new Entrenamientos();
-                    if ($m->insertarLibro($titulo, $autor, $editorial, $anyo)) {
+                    if ($m->insertarEjercicio($nombre, $descripcion, $grupoMuscular, $grupoCuerpo)) {
                         header('Location: index.php?ctl=listarLibros');
                     } else {
                         $params = array(
-                            'titulo' => $titulo,
-                            'autor' => $autor,
-                            'editorial' => $editorial,
-                            'anyo' => $anyo
+                            'nombre' => $nombre,
+                            'descripcion' => $descripcion,
+                            'grupoMuscular' => $grupoMuscular,
+                            'grupoCuerpo' => $grupoCuerpo
                         );
                         $params['mensaje'] = 'No se ha podido insertar el alimento. Revisa el formulario.';
                     }
                 } else {
                     $params = array(
-                        'titulo' => $titulo,
-                        'autor' => $autor,
-                        'editorial' => $editorial,
-                        'anyo' => $anyo
+                        'nombre' => $nombre,
+                        'descripcion' => $descripcion,
+                        'grupoMuscular' => $grupoMuscular,
+                        'grupoCuerpo' => $grupoCuerpo
                     );
                     $params['mensaje'] = 'Hay datos que no son correctos. Revisa el formulario';
                 }
@@ -365,6 +365,6 @@ class Controller
 
         $menu = $this->cargaMenu();
 
-        require __DIR__ . '/../../web/templates/formInsertarL.php';
+        require __DIR__ . '/../../web/templates/formInsertarEjercicios.php';
     }
 }

@@ -1,6 +1,7 @@
-SQLSTATE[HY000] [1049] Unknown database 'biblioteca'0.76644400 1674213781
-SQLSTATE[HY000] [1049] Unknown database 'biblioteca'0.10927700 1674213835
-SQLSTATE[HY000] [1049] Unknown database 'biblioteca'0.71035100 1674213841
-SQLSTATE[HY000] [1049] Unknown database 'biblioteca'0.24566500 1674213847
-SQLSTATE[HY000] [1049] Unknown database 'biblioteca'0.25351000 1674213862
-SQLSTATE[HY000] [1049] Unknown database 'biblioteca'0.11840900 1674213864
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ejercicios' in 'order clause'0.03065400 1675366323
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ejercicios' in 'order clause'0.98942900 1675367230
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ejercicios' in 'order clause'0.05968700 1675410195
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ejercicios' in 'order clause'0.39268600 1675418836
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ejercicios' in 'order clause'0.80825400 1675419846
+SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens0.04077500 1675427177
+SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens0.84764900 1675427180

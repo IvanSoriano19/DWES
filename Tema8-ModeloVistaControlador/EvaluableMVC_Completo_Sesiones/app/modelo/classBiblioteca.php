@@ -36,8 +36,8 @@ class Biblioteca extends Modelo {
     }
     
     public function buscarLibrosTitulo($titulo) {
-        $consulta = "SELECT * FROM biblioteca.listaLibros WHERE titulo=:titulo";
-        
+        $consulta = "SELECT * FROM biblioteca.listaLibros WHERE titulo LIKE :titulo";
+        $titulo = $titulo.'%';
         $result = $this->conexion->prepare($consulta);
         $result->bindParam(':titulo', $titulo);
         $result->execute();

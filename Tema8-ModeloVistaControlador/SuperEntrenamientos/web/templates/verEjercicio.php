@@ -6,36 +6,31 @@ if (isset($params['mensaje'])) {
     ?>
 <b><span style="color: rgba(200, 119, 119, 1);"></span></b>
 
-	<div class"container-fluid">
+	<div class="container-fluid">
 			<div class="container">
 				<div class="row">				
 					<div class="col-md-3">
 						<p></p>
 					</div>
 					<div class="col-md-6">
-						<h1 class="p-2"><?php echo $params['libros']['titulo']?></h1>
+						<h1 class="p-2"><?php echo $params['ejercicios']['nombre']?></h1>
 						<table border="1" cellpadding="10">
 							<tr align="center">
-								<th>Título</th>
-								<td><?php echo $params['libros']['titulo']; ?></td>
+								<th>descripcion</th>
+								<td><?php echo $params['ejercicios']['descripcion']; ?></td>
 							</tr>
 							<tr align="center">
-								<th>Autor</th>
-								<td><?php echo $params['libros']['autor']; ?></td>
+								<th>Grupo Muscular</th>
+								<td><?php echo $params['musculo']['grupoMuscular']; ?></td>
 							</tr>
 							<tr align="center">
-								<th>Editorial</th>
-								<td><?php echo $params['libros']['editorial']; ?></td>
-							</tr>
-							<tr align="center">
-								<th>Fecha de publicación</th>
-								<td><?php echo $params['libros']['anyo']; ?></td>
+								<th>Tren al que pertenece</th>
+								<td><?php echo $params['musculo']['grupoCuerpo']; ?></td>
 							</tr>
 						</table>
 					</div>
 
 					<div class="col-md-3">	            
-              		
 										
 				</div>
 			</div>

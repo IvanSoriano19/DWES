@@ -6,7 +6,7 @@ if (isset($params['mensaje'])) {
     ?>
 <b><span style="color: rgba(200, 119, 119, 1);"></span></b>
 
-	<div class"container-fluid">
+	<div class="container-fluid">
 			<div class="container">
 				<div class="row">				
 					<div class="col-md-3">

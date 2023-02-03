@@ -362,7 +362,7 @@ function cFile(string $nombre, array &$errores, array $extensionesValidas, strin
     }
 }
 
-// TODO: crear funcion para la fecha
+
 
 function cFecha(String $fecha)
 {
