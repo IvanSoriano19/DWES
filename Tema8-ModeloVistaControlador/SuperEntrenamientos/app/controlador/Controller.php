@@ -229,18 +229,18 @@ class Controller
     }
 
 
-    public function buscarPorTitulo()
+    public function buscarPorNombre()
     {
         try {
             $params = array(
-                'titulo' => '',
+                'nombre' => '',
                 'resultado' => array()
             );
             $m = new Entrenamientos();
-            if (isset($_POST['buscarPorTitulo'])) {
-                $titulo = recoge("titulo");
-                $params['titulo'] = $titulo;
-                $params['resultado'] = $m->buscarLibrosTitulo($titulo);
+            if (isset($_POST['buscarPorNombre'])) {
+                $nombre = recoge("nombre");
+                $params['nombre'] = $nombre;
+                $params['resultado'] = $m->buscarPorNombre($nombre);
             }
         } catch (Exception $e) {
             error_log($e->getMessage() . microtime() . PHP_EOL, 3, "../app/log/logExceptio.txt");
@@ -252,22 +252,22 @@ class Controller
 
         $menu = $this->cargaMenu();
 
-        require __DIR__ . '/../../web/templates/buscarPorTitulo.php';
+        require __DIR__ . '/../../web/templates/buscarPorNombre.php';
     }
 
 
-    public function buscarPorAutor()
+    public function buscarPorGrupoMuscular()
     {
         try {
             $params = array(
-                'autor' => '',
+                'grupoMuscular' => '',
                 'resultado' => array()
             );
             $m = new Entrenamientos();
-            if (isset($_POST['buscarPorAutor'])) {
-                $autor = recoge("autor");
-                $params['autor'] = $autor;
-                $params['resultado'] = $m->buscarLibrosAutor($autor);
+            if (isset($_POST['buscarPorGrupoMuscular'])) {
+                $grupoMuscular = recoge("grupoMuscular");
+                $params['grupoMuscular'] = $grupoMuscular;
+                $params['resultado'] = $m->buscarPorGrupoMuscular($grupoMuscular);
             }
         } catch (Exception $e) {
             error_log($e->getMessage() . microtime() . PHP_EOL, 3, "../app/log/logExceptio.txt");
@@ -279,7 +279,7 @@ class Controller
 
         $menu = $this->cargaMenu();
 
-        require __DIR__ . '/../../web/templates/buscarPorAutor.php';
+        require __DIR__ . '/../../web/templates/buscarPorGrupoMuscular.php';
     }
 
 
@@ -317,31 +317,26 @@ class Controller
                 'nombre' => '',
                 'descripcion' => '',
                 'grupoMuscular' => '',
-                'grupoCuerpo' => ''
             );
             $errores = array();
             if (isset($_POST['bInsertarEjercicio'])) {
                 $nombre = recoge('nombre');
-                $descripcion = recoge('descripcion');
+                $descripcion = recogeArea('descripcion');
                 $grupoMuscular = recoge('grupoMuscular');
-                $grupoCuerpo = recoge('grupoCuerpo');
                 // Comprobar campos formulario. Aqui va la validación con las funciones de bGeneral
                 cTexto($nombre, "nombre", $errores);
-                cTexto($descripcion, "descripcion", $errores);
                 cTexto($grupoMuscular, "grupoMuscular", $errores);
-                cTexto($grupoCuerpo, "grupoCuerpo", $errores);
 
                 if (empty($errores)) {
                     // Si no ha habido problema creo modelo y hago inserción
                     $m = new Entrenamientos();
-                    if ($m->insertarEjercicio($nombre, $descripcion, $grupoMuscular, $grupoCuerpo)) {
-                        header('Location: index.php?ctl=listarLibros');
+                    if ($m->insertarEjercicio($nombre, $descripcion, $grupoMuscular)) {
+                        header('Location: index.php?ctl=listarEjercicios');
                     } else {
                         $params = array(
                             'nombre' => $nombre,
                             'descripcion' => $descripcion,
                             'grupoMuscular' => $grupoMuscular,
-                            'grupoCuerpo' => $grupoCuerpo
                         );
                         $params['mensaje'] = 'No se ha podido insertar el alimento. Revisa el formulario.';
                     }
@@ -350,7 +345,6 @@ class Controller
                         'nombre' => $nombre,
                         'descripcion' => $descripcion,
                         'grupoMuscular' => $grupoMuscular,
-                        'grupoCuerpo' => $grupoCuerpo
                     );
                     $params['mensaje'] = 'Hay datos que no son correctos. Revisa el formulario';
                 }

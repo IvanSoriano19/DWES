@@ -21,13 +21,10 @@ if (isset($params['mensaje'])) {
 							</tr>
 							<tr align="center">
 								<th>Grupo Muscular</th>
-								<td><?php echo $params['musculo']['grupoMuscular']; ?></td>
-							</tr>
-							<tr align="center">
-								<th>Tren al que pertenece</th>
-								<td><?php echo $params['musculo']['grupoCuerpo']; ?></td>
+								<td><?php echo $params['ejercicios']['grupoMuscular']; ?></td>
 							</tr>
 						</table>
+						
 					</div>
 
 					<div class="col-md-3">	            

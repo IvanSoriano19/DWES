@@ -33,35 +33,30 @@ class Entrenamientos extends Modelo
 
     public function verEjercicio($id_ejercicio)
     {
-        $consulta = "SELECT bancoentrenamiento.ejercicios.*, bancoentrenamiento.musculo.* FROM bancoentrenamiento.ejercicios 
-        INNER JOIN bancoentrenamiento.ejercicio_musculo
-            ON ejercicios.id_ejercicio = bancoentrenamiento.ejercicio_musculo:id_ejercicio
-        INNER JOIN bancoentrenamiento.musculo
-            ON musculo.id_musculo =  bancoentrenamiento.ejercicio_musculo:id_ejercicio";
+        $consulta = "SELECT * FROM bancoentrenamiento.ejercicios WHERE id_ejercicio=:id_ejercicio";
         $result = $this->conexion->prepare($consulta);
         $result->bindParam(':id_ejercicio', $id_ejercicio);
         $result->execute();
         return $result->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function buscarLibrosTitulo($titulo)
+    public function buscarPorNombre($nombre)
     {
-        $consulta = "SELECT * FROM bancoentrenamiento.listaLibros WHERE titulo=:titulo";
-
+        $consulta = "SELECT * FROM bancoentrenamiento.ejercicios WHERE nombre LIKE :nombre";
+        $nombre = $nombre.'%';
         $result = $this->conexion->prepare($consulta);
-        $result->bindParam(':titulo', $titulo);
+        $result->bindParam(':nombre', $nombre);
         $result->execute();
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function buscarLibrosAutor($autor)
+    public function buscarPorGrupoMuscular($musculo)
     {
-        $consulta = "SELECT * FROM bancoentrenamiento.listaLibros WHERE autor=:autor";
-
+        $consulta = "SELECT * FROM bancoentrenamiento.ejercicios WHERE grupoMuscular LIKE :grupoMuscular";
+        $musculo = $musculo.'%';
         $result = $this->conexion->prepare($consulta);
-        $result->bindParam(':autor', $autor);
+        $result->bindParam(':grupoMuscular', $musculo);
         $result->execute();
-
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -75,15 +70,16 @@ class Entrenamientos extends Modelo
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function insertarEjercicio($nombre, $descripcion, $grupoMuscular, $grupoCuerpo)
+    public function insertarEjercicio($nombre, $descripcion, $grupoMuscular)
     {
-        $consulta = "INSERT INTO bancoentrenamiento.ejercicios (nombre, descripcion) VALUES (:nombre, :descripcion);INSERT INTO bancoentrenamiento.musculo (grupoMuscular, grupoCuerpo) VALUES (:grupoMuscular, :grupoCuerpo)";
+        $consulta = "INSERT INTO bancoentrenamiento.ejercicios (nombre, descripcion, grupoMuscular) VALUES (:nombre, :descripcion, :grupoMuscular)";
         $result = $this->conexion->prepare($consulta);
         $result->bindParam(':nombre', $nombre);
         $result->bindParam(':descripcion', $descripcion);
         $result->bindParam(':grupoMuscular', $grupoMuscular);
-        $result->bindParam(':grupoCuerpo', $grupoCuerpo);
         $result->execute();
+
         return $result;
     }
+
 }

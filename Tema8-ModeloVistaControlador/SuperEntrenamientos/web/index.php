@@ -27,14 +27,12 @@ $map = array(
     'error' => array('controller' =>'Controller', 'action' =>'error', 'nivel_usuario'=>0),
     'iniciarSesion' => array('controller' =>'Controller', 'action' =>'iniciarSesion', 'nivel_usuario'=>0),
     'registro' => array('controller' =>'Controller', 'action' =>'registro', 'nivel_usuario'=>0),    
-    //TODO: MODIFICAR CONTROLADOR  
+    
     'listarEjercicios' => array('controller' =>'Controller', 'action' =>'listarEjercicios', 'nivel_usuario'=>0),
-    //TODO: MODIFICAR CONTROLADOR  
     'verEjercicio' => array('controller' =>'Controller', 'action' =>'verEjercicio', 'nivel_usuario'=>0),
+    'buscarPorNombre' => array('controller' =>'Controller', 'action' =>'buscarPorNombre', 'nivel_usuario'=>1),
     //TODO: MODIFICAR CONTROLADOR  
-    'buscarPorTitulo' => array('controller' =>'Controller', 'action' =>'buscarPorTitulo', 'nivel_usuario'=>1),
-    //TODO: MODIFICAR CONTROLADOR  
-    'buscarPorAutor' => array('controller' =>'Controller', 'action' =>'buscarPorAutor', 'nivel_usuario'=>1),
+    'buscarPorGrupoMuscular' => array('controller' =>'Controller', 'action' =>'buscarPorGrupoMuscular', 'nivel_usuario'=>1),
     //TODO: MODIFICAR CONTROLADOR  
     'buscarPorEditorial' => array('controller' =>'Controller', 'action' =>'buscarPorEditorial', 'nivel_usuario'=>1),
     //TODO: CREAR CONTROLADOR  MIS EJERCICIOS

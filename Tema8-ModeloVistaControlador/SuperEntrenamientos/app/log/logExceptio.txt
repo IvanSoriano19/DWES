@@ -5,3 +5,11 @@ SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ejercicios' in 'order cl
 SQLSTATE[42S22]: Column not found: 1054 Unknown column 'ejercicios' in 'order clause'0.80825400 1675419846
 SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens0.04077500 1675427177
 SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens0.84764900 1675427180
+SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens0.37254400 1675427800
+SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens0.47294500 1675427802
+SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens0.38752300 1675437130
+SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens0.30160500 1675437839
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'musculo' in 'where clause'0.31242400 1675445205
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'musculo' in 'where clause'0.33224000 1675445299
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'musculo' in 'where clause'0.85059900 1675445319
+SQLSTATE[42S22]: Column not found: 1054 Unknown column 'musculo' in 'where clause'0.19863600 1675445502

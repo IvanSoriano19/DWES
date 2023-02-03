@@ -4,11 +4,11 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 ">
-				<a href="index.php?ctl=home" class="p-4">INICIO</a>
-				<a href="index.php?ctl=listarLibros" class="p-4">LIBROS</a>
-				<a href="index.php?ctl=buscarPorTitulo" class="p-4">BUSCAR POR TÍTULO</a>
-				<a href="index.php?ctl=buscarPorAutor" class="p-4">BUSCAR POR AUTOR</a>
-				<a href="index.php?ctl=buscarPorEditorial" class="p-4">BUSCAR POR EDITORIAL</a>
+			<a href="index.php?ctl=home" class="p-3">INICIO</a>
+				<a href="index.php?ctl=listarEjercicios" class="p-3">EJERCICIOS</a>
+				<a href="index.php?ctl=buscarPorNombre" class="p-3">BUSCAR POR NOMBRE</a>
+				<a href="index.php?ctl=buscarPorGrupoMuscular" class="p-3">BUSCAR POR GRUPO MUSCULAR</a>
+				<a href="index.php?ctl=buscarPorEditorial" class="p-3">MIS ENTRENAMIENTOS</a>
 				
 				<a HREF="index.php?ctl=salir"><button TYPE="button" class="btn btn-secondary mt-3" style="width: 150px;">CERRAR SESIÓN</button></a>
 

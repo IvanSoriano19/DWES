@@ -20,7 +20,6 @@
 			<p><input TYPE="text" class="form-control" NAME="nombre" PLACEHOLDER="Nombre del ejercicio"><br></p>
 			<p><textarea name="descripcion" class="form-control" id="Descripcion" ></textarea></p>
 			<p><input TYPE="text" class="form-control" NAME="grupoMuscular" PLACEHOLDER="Grupo muscular"><br></p>
-			<p><input TYPE="text" class="form-control" NAME="grupoCuerpo" PLACEHOLDER="Tren inferior/Tren superior/Core"><br></p>
 			<input TYPE="submit" name="bInsertarEjercicio" VALUE="Aceptar" PLACEHOLDER="Nombre de usuario"><br>
 		</form>
 	</div>

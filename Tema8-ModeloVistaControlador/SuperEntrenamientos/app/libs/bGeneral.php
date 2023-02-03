@@ -127,6 +127,44 @@ function recogeArray(string $var): array
 }
 
 
+/** 
+ * Crear los saltos de linea
+ *
+ * 
+ * @param string $frase
+ * @param string $espacio
+ * @return string
+ */
+
+
+
+function saltosLinea($frase)
+{
+    $texto = str_replace(PHP_EOL, "<br>", $frase);
+    return $texto;
+}
+
+
+/**
+ * Funcion recogeArea
+ * 
+ * Sanitiza cadenas de texto que 
+ * estan en un textarea
+ * 
+ * @param string $var
+ * @return string
+ */
+
+function recogeArea(string $var)
+{
+    if (isset($_REQUEST[$var]) && (!is_array($_REQUEST[$var]))) {
+        $tmp = saltosLinea($_REQUEST[$var]);
+    } else
+        $tmp = "hola";
+
+    return $tmp;
+}
+
 
 //***** Funciones de validación **** //
 
@@ -150,7 +188,7 @@ function cTexto(string $text, string $campo, array &$errores, int $max = 30, int
 {
     $case = ($case === TRUE) ? "i" : "";
     $espacios = ($espacios === TRUE) ? " " : "";
-    if ((preg_match("/^[a-zñ$espacios]{" . $min . "," . $max . "}$/u$case", sinTildes($text)))) {
+    if ((preg_match("/^[a-zA-ZñÑ$espacios]{" . $min . "," . $max . "}$/u$case", sinTildes($text)))) {
         return true;
     }
     $errores[$campo] = "Error en el campo $campo";

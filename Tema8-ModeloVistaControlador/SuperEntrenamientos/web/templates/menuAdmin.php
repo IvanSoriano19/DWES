@@ -5,10 +5,10 @@
 		<div class="row">
 			<div class="col-md-12 ">
 				<a href="index.php?ctl=home" class="p-3">INICIO</a>
-				<a href="index.php?ctl=listarEjercicios" class="p-3">LIBROS</a>
-				<a href="index.php?ctl=buscarPorEjercicio" class="p-3">BUSCAR POR TÍTULO</a>
-				<a href="index.php?ctl=buscarPorCuerpo" class="p-3">BUSCAR POR AUTOR</a>
-				<a href="index.php?ctl=buscarPorEditorial" class="p-3">BUSCAR POR EDITORIAL</a>
+				<a href="index.php?ctl=listarEjercicios" class="p-3">EJERCICIOS</a>
+				<a href="index.php?ctl=buscarPorNombre" class="p-3">BUSCAR POR NOMBRE</a>
+				<a href="index.php?ctl=buscarPorGrupoMuscular" class="p-3">BUSCAR POR GRUPO MUSCULAR</a>
+				<a href="index.php?ctl=buscarPorEditorial" class="p-3">MIS ENTRENAMIENTOS</a>
 				<a href="index.php?ctl=insertarEjercicio" class="p-3">INSERTAR EJERCICIO</a>
 				<a HREF="index.php?ctl=salir"><button TYPE="button" class="btn btn-secondary mt-3" style="width: 150px;">CERRAR SESIÓN</button></a>
 
