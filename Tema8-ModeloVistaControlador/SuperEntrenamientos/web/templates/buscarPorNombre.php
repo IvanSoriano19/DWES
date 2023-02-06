@@ -1,12 +1,13 @@
 <?php ob_start() ?>
 
-<div class="container">
+<div class="container mt-4"  align="center">
 	<form name="formBusquedaEjercicio" action="index.php?ctl=buscarPorNombre" method="POST">
 		<table>
 			<tr>
-				<td>Nombre del ejercicio:</td>
-				<td><input TYPE="text" NAME="nombre" VALUE="<?php echo $params['nombre']?>"></td>
-				<td><input TYPE="submit" NAME="buscarPorNombre" VALUE="Buscar"></td>
+				<td>Nombre del ejercicio</td><br>
+			</tr>
+			<tr>
+				<td><input TYPE="text" NAME="nombre" VALUE="<?php echo $params['nombre']?>"><input TYPE="submit" NAME="buscarPorNombre" VALUE="Buscar"></td>
 			</tr>
 		</table>
 	</form>
@@ -14,7 +15,7 @@
 
 <?php if (count($params['resultado'])>0): ?>
 
-<div class="container">
+<div class="container mt-4" align="center">
 	<div class="row">
 
 		<div class="col-md-4">

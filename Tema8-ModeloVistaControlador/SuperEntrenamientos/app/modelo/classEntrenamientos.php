@@ -12,13 +12,15 @@ class Entrenamientos extends Modelo
         return $result->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function insertarUsuario($nombre, $apellido, $nombreUsuario, $contrasenya)
+    public function insertarUsuario($nombre, $apellido, $nombreUsuario, $correoElectronico, $fotoPerfil, $contrasenya)
     {
-        $consulta = "INSERT INTO bancoentrenamiento.usuarios (nombre, apellido, nombreUsuario, contrasenya) VALUES (:nombre, :apellido, :nombreUsuario, :contrasenya)";
+        $consulta = "INSERT INTO bancoentrenamiento.usuarios (nombre, apellido, nombreUsuario, correoElectronico, fotoPerfil, contrasenya) VALUES (:nombre, :apellido, :nombreUsuario, :correoElectronico, :fotoPerfil, :contrasenya)";
         $result = $this->conexion->prepare($consulta);
         $result->bindParam(':nombre', $nombre);
         $result->bindParam(':apellido', $apellido);
         $result->bindParam(':nombreUsuario', $nombreUsuario);
+        $result->bindParam(':correoElectronico', $correoElectronico);
+        $result->bindParam(':fotoPerfil', $fotoPerfil);
         $result->bindParam(':contrasenya', $contrasenya);
         $result->execute();
         return $result;
@@ -60,12 +62,33 @@ class Entrenamientos extends Modelo
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function buscarLibrosEditorial($editorial)
+
+    public function agregarEjercicio($id_ejercicio){
+
+        $nombreUsuario = $_SESSION['nombreUsuario'];
+
+        $consulta = "INSERT INTO bancoentrenamiento.ejercicio_usuario (id_usuario, id_ejercicio) 
+        VALUES ((SELECT bancoentrenamiento.usuarios.id_usuario FROM bancoentrenamiento.usuarios WHERE bancoentrenamiento.usuarios.nombreUsuario=:nombreUsuario), :id_ejercicio) ";
+        $result = $this->conexion->prepare($consulta);
+        $result->bindParam(':nombreUsuario', $nombreUsuario);
+        $result->bindParam(':id_ejercicio', $id_ejercicio);
+        $result->execute();
+
+        return $result;
+    }
+
+    public function mostrarMisEjercicios()
     {
-        $consulta = "SELECT * FROM bancoentrenamiento.listaLibros WHERE editorial=:editorial";
+        $nombreUsuario = $_SESSION['nombreUsuario'];
+
+        
+        $consulta = "SELECT bancoentrenamiento.ejercicios.* FROM bancoentrenamiento.usuarios 
+        JOIN bancoentrenamiento.ejercicio_usuario ON bancoentrenamiento.usuarios.id_usuario = bancoentrenamiento.ejercicio_usuario.id_usuario 
+        JOIN bancoentrenamiento.ejercicios ON bancoentrenamiento.ejercicios.id_ejercicio = bancoentrenamiento.ejercicio_usuario.id_ejercicio 
+        WHERE bancoentrenamiento.usuarios.nombreUsuario=:nombreUsuario";
 
         $result = $this->conexion->prepare($consulta);
-        $result->bindParam(':editorial', $editorial);
+        $result->bindParam(':nombreUsuario', $nombreUsuario);
         $result->execute();
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }

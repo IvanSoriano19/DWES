@@ -1,46 +1,55 @@
-
 /* BARRA MENU */
-.menu{
-	background-color: #1A374D;
-    box-shadow: 2px 2px 5px rgba(8, 8, 8, 0.767); /*Sombreado*/
+.menu {
+  background-color: #1a374d;
+  box-shadow: 2px 2px 5px rgba(8, 8, 8, 0.767); /*Sombreado*/
 }
 
 .menu a {
-	color: white;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-decoration: none;
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-decoration: none;
 }
 
-.menu a:hover { /*Al pasar el raton por encima del menu cambia de color*/
-    color:#B1D0E0;
-    transition: all .3s;
+.menu a:hover {
+  /*Al pasar el raton por encima del menu cambia de color*/
+  color: #b1d0e0;
+  transition: all 0.3s;
 }
 
-/* */ 
+.white {
+  color: white;
+}
+
+.cerrarSesion {
+  background-color: #6998ab;
+  color: white;
+}
+
+/* */
 
 .h1Inicio {
-	color: #406882;
+  color: #406882;
 }
 
 .tablaP {
-	color: #406882;
-	font-size: 20px;
+  color: #406882;
+  font-size: 20px;
 }
 
-.tablaP:hover { /*Al pasar el raton por encima del menu cambia de color*/
-    color: #6998AB;
-    transition: all .3s;
+.tablaP:hover {
+  /*Al pasar el raton por encima del menu cambia de color*/
+  color: #6998ab;
+  transition: all 0.3s;
 }
-
 
 /* FOOTER */
 .pie {
-	background-color: #1A374D;
-	color: white;
-	box-shadow: 2px 2px 5px rgba(8, 8, 8, 0.767); /*Sombreado*/	
+  background-color: #1a374d;
+  color: white;
+  box-shadow: 2px 2px 5px rgba(8, 8, 8, 0.767); /*Sombreado*/
+  width: 100%;
 }
 
-
 .borde {
-    border: 2px solid rgba(58, 56, 56, 0.918);
+  border: 2px solid rgba(58, 56, 56, 0.918);
 }

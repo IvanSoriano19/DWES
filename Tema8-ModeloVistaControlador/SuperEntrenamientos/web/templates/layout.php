@@ -37,12 +37,7 @@
 			</div>
 		</div>
 	</div>
-	
-	<div class="container-fluid pie p-2 my-5 ">
-		<div class="container">
-			<h5 class="text-center">Entrenamientos con solo un click</h5>
-		</div>
-	</div>
+
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>

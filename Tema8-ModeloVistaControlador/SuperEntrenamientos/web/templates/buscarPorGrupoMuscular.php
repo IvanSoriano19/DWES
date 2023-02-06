@@ -1,12 +1,13 @@
 <?php ob_start() ?>
 
-<div class="container">
+<div class="container mt-4" align="center">
 	<form name="formBusquedaGrupoMuscular" action="index.php?ctl=buscarPorGrupoMuscular" method="POST">
 		<table>
 			<tr>
-				<td>Grupo Muscular que quieras buscar</td>
-				<td><input TYPE="text" NAME="grupoMuscular" VALUE="<?php echo $params['grupoMuscular']?>"></td>
-				<td><input TYPE="submit" NAME="buscarPorGrupoMuscular" VALUE="Buscar"></td>
+				<td>Grupo Muscular que quieras buscar</td><br>
+			</tr>
+			<tr>
+				<td><input TYPE="text" NAME="grupoMuscular" VALUE="<?php echo $params['grupoMuscular']?>"><input TYPE="submit" NAME="buscarPorGrupoMuscular" VALUE="Buscar"></td>
 			</tr>
 		</table>
 	</form>
@@ -14,7 +15,7 @@
 
 <?php if (count($params['resultado'])>0): ?>
 	
-<div class="container">
+<div class="container mt-4" align="center"">
 	<div class="row">
 	
 		<div class="col-md-4">

@@ -27,17 +27,14 @@ $map = array(
     'error' => array('controller' =>'Controller', 'action' =>'error', 'nivel_usuario'=>0),
     'iniciarSesion' => array('controller' =>'Controller', 'action' =>'iniciarSesion', 'nivel_usuario'=>0),
     'registro' => array('controller' =>'Controller', 'action' =>'registro', 'nivel_usuario'=>0),    
-    
     'listarEjercicios' => array('controller' =>'Controller', 'action' =>'listarEjercicios', 'nivel_usuario'=>0),
     'verEjercicio' => array('controller' =>'Controller', 'action' =>'verEjercicio', 'nivel_usuario'=>0),
     'buscarPorNombre' => array('controller' =>'Controller', 'action' =>'buscarPorNombre', 'nivel_usuario'=>1),
-    //TODO: MODIFICAR CONTROLADOR  
     'buscarPorGrupoMuscular' => array('controller' =>'Controller', 'action' =>'buscarPorGrupoMuscular', 'nivel_usuario'=>1),
-    //TODO: MODIFICAR CONTROLADOR  
-    'buscarPorEditorial' => array('controller' =>'Controller', 'action' =>'buscarPorEditorial', 'nivel_usuario'=>1),
-    //TODO: CREAR CONTROLADOR  MIS EJERCICIOS
-
-    
+    'mostrarMisEjercicios' => array('controller' =>'Controller', 'action' =>'mostrarMisEjercicios', 'nivel_usuario'=>1),
+    'agregarEjercicio' => array('controller' =>'Controller', 'action' =>'agregarEjercicio', 'nivel_usuario'=>1),
+//TODO: CREAR CONTROLADOR  newsletter
+    'newsletter' => array('controller' =>'Controller', 'action' =>'newsletter', 'nivel_usuario'=>1) , 
     'insertarEjercicio' => array('controller' =>'Controller', 'action' =>'insertarEjercicios', 'nivel_usuario'=>2)  
 );
 

@@ -333,6 +333,17 @@ function cCheck(array $text, string $campo, array &$errores, array $valores, boo
 }
 
 
+//funcion para validar el email
+
+function cEmail(string $text,string $campo, array &$errores, int $max = 30, int $min = 1){
+    if ((preg_match("[a-z0-9_-]*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?{" . $min . "," . $max . "}$/u", sinTildes($text)))) {
+        return true;
+    }
+    $errores[$campo] = "Error en el campo $campo";
+    return false;
+}
+
+
 /**
  * Funcion cFile
  * 
@@ -346,11 +357,11 @@ function cCheck(array $text, string $campo, array &$errores, array $valores, boo
  * @param boolean $required
  * @return boolean|string
  */
-function cFile(string $nombre, array &$errores, array $extensionesValidas, string $directorio, int  $max_file_size,  bool $required = TRUE)
+function cFile(string $nombre, array &$errores, array $extensionesValidas, int  $max_file_size,  bool $required = TRUE)
 {
     // Caso especial que el campo de file no es requerido y no se intenta subir ningun archivo
     if ((!$required) && $_FILES[$nombre]['error'] === 4)
-        return true;
+        return false;
     // En cualquier otro caso se comprueban los errores del servidor 
     if ($_FILES[$nombre]['error'] != 0) {
         $errores["$nombre"] = "Error al subir el archivo " . $nombre . ". Prueba de nuevo";
@@ -382,44 +393,44 @@ function cFile(string $nombre, array &$errores, array $extensionesValidas, strin
         /*
             * Comprobamos el tamaño del archivo
             */
-        if ($tamanyoFile > $max_file_size) {
+        if ($tamanyoFile > 300000) {
             $errores["$nombre"] = "La imagen debe de tener un tamaño inferior a $max_file_size kb";
             return false;
         }
 
         // Almacenamos el archivo en ubicación definitiva si no hay errores ( al compartir array de errores TODOS LOS ARCHIVOS tienen que poder procesarse para que sea exitoso. Si cualquiera da error, NINGUNO  se procesa)
 
-        if (empty($errores)) {
-            /**
-             * Comprobamos si el directorio pasado es válido
-             */
-            if (is_dir($directorio)) {
-                /**
-                 * Tenemos que buscar un nombre único para guardar el fichero de manera definitiva.
-                 * Podemos hacerlo de diferentes maneras, en este caso se hace añadiendo microtime() al nombre del fichero 
-                 * si ya existe un archivo guardado con ese nombre.
-                 * */
-                $nombreArchivo = is_file($directorio . DIRECTORY_SEPARATOR . $nombreArchivo) ? time() . $nombreArchivo : $nombreArchivo;
-                $nombreCompleto = $directorio . DIRECTORY_SEPARATOR . $nombreArchivo;
-                /**
-                 * Movemos el fichero a la ubicación definitiva.
-                 * */
-                if (move_uploaded_file($directorioTemp, $nombreCompleto)) {
-                    /**
-                     * Si todo es correcto devuelve la ruta y nombre del fichero como se ha guardado
-                     */
+        // if (empty($errores)) {
+        //     /**
+        //      * Comprobamos si el directorio pasado es válido
+        //      */
+        //     if (is_dir($directorio)) {
+        //         /**
+        //          * Tenemos que buscar un nombre único para guardar el fichero de manera definitiva.
+        //          * Podemos hacerlo de diferentes maneras, en este caso se hace añadiendo microtime() al nombre del fichero 
+        //          * si ya existe un archivo guardado con ese nombre.
+        //          * */
+        //         $nombreArchivo = is_file($directorio . DIRECTORY_SEPARATOR . $nombreArchivo) ? time() . $nombreArchivo : $nombreArchivo;
+        //         $nombreCompleto = $directorio . DIRECTORY_SEPARATOR . $nombreArchivo;
+        //         /**
+        //          * Movemos el fichero a la ubicación definitiva.
+        //          * */
+        //         if (move_uploaded_file($directorioTemp, $nombreCompleto)) {
+        //             /**
+        //              * Si todo es correcto devuelve la ruta y nombre del fichero como se ha guardado
+        //              */
 
 
-                    return $nombreCompleto;
-                } else {
-                    $errores["$nombre"] = "Ha habido un error al subir el fichero";
-                    return false;
-                }
-            } else {
-                $errores["$nombre"] = "Ha habido un error al subir el fichero";
-                return false;
-            }
-        }
+        //             return $nombreCompleto;
+        //         } else {
+        //             $errores["$nombre"] = "Ha habido un error al subir el fichero";
+        //             return false;
+        //         }
+        //     } else {
+        //         $errores["$nombre"] = "Ha habido un error al subir el fichero";
+        //         return false;
+        //     }
+        // }
     }
 }
 
@@ -431,4 +442,18 @@ function crypt_blowfish($password)
     $pass = crypt($password, $salt);
 
     return $pass;
+}
+
+
+function get_gravatar( $correoElectronico, $s = 80, $d = 'mp', $r = 'g', $img = false, $atts = array() ) {
+    $url = 'https://www.gravatar.com/avatar/';
+    $url .= md5( strtolower( trim( $correoElectronico ) ) );
+    $url .= "?s=$s&d=$d&r=$r";
+    if ( $img ) {
+        $url = '<img src="' . $url . '"';
+        foreach ( $atts as $key => $val )
+            $url .= ' ' . $key . '="' . $val . '"';
+        $url .= ' />';
+    }
+    return $url;
 }

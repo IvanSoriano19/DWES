@@ -1,18 +1,31 @@
-
-<h3 class="me-0 text">Bienvenido <?php echo $_SESSION['nombreUsuario']?></h3>
-<div class="container-fluid menu text-center p-3 my-4">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 ">
-			<a href="index.php?ctl=home" class="p-3">INICIO</a>
-				<a href="index.php?ctl=listarEjercicios" class="p-3">EJERCICIOS</a>
-				<a href="index.php?ctl=buscarPorNombre" class="p-3">BUSCAR POR NOMBRE</a>
-				<a href="index.php?ctl=buscarPorGrupoMuscular" class="p-3">BUSCAR POR GRUPO MUSCULAR</a>
-				<a href="index.php?ctl=buscarPorEditorial" class="p-3">MIS ENTRENAMIENTOS</a>
-				
-				<a HREF="index.php?ctl=salir"><button TYPE="button" class="btn btn-secondary mt-3" style="width: 150px;">CERRAR SESIÓN</button></a>
-
-			</div>
+<nav class="navbar navbar-expand-lg menu bg-body-tertiary">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="index.php?ctl=home">INICIO</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<li class="nav-item">
+					<a class="nav-link" aria-current="page" href="index.php?ctl=listarEjercicios">EJERCICIOS</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" aria-current="page" href="index.php?ctl=buscarPorNombre">BUSCAR POR NOMBRE</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" aria-current="page" href="index.php?ctl=buscarPorGrupoMuscular">BUSCAR POR GRUPO MUSCULAR</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" aria-current="page" href="index.php?ctl=mostrarMisEjercicios">MIS EJERCICIOS</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" aria-current="page" href="index.php?ctl=newsletter">NEWSLETTER</a>
+				</li>
+			</ul>
+			<ul class="d-flex" style="list-style: none; color:white">
+				<li><a href="#" class="nav-link mt-1"><?php echo '<img width="50px" height="50px" src="data:image/png;base64,' . base64_encode($_SESSION["fotoPerfil"]) . ' ">' ?> <?php echo $_SESSION['nombreUsuario'] ?></a></li>
+				<li><a HREF="index.php?ctl=salir" class="nav-link mt-3">CERRAR SESIÓN</a></li>
+			</ul>
 		</div>
 	</div>
-</div>
+</nav>
