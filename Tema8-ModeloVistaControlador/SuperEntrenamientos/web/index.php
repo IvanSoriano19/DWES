@@ -44,6 +44,8 @@ if (isset($_GET['ctl'])) {
         $ruta = $_GET['ctl'];
     } else {
 
+        // $ruta = 'error';
+        
         //Si el valor puesto en ctl en la URL no existe en el array de mapeo envía una cabecera de error
         header('Status: 404 Not Found');
         echo '<html><body><h1>Error 404: No existe la ruta <i>' .

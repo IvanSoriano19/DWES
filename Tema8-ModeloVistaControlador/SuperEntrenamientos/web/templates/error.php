@@ -11,6 +11,11 @@ if (isset($params['mensaje'])) {
 <div class="container text-center p-4">
 		<h3>Ha habido un error</h3>
 </div>
+<!-- 
+<div class="container text-center p-4">
+		<h3>Ha habido un error</h3>
+        pulsa aqui para volver<a href="index.php?ctl=inicio">Aqui</a>
+</div> -->
 
 <?php $contenido = ob_get_clean() ?>
 

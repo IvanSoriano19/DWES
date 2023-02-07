@@ -9,17 +9,30 @@ class Controller
         if ($_SESSION['nivel_usuario'] == 0) {
             return 'menuInvitado.php';
         } else if ($_SESSION['nivel_usuario'] == 1) {
-            if(isset($_COOKIE[$_SESSION['nombreUsuario']])){
+            $this -> inactividad();
+            if (isset($_COOKIE[$_SESSION['nombreUsuario']])) {
                 return 'menuUser.php';
-            }else{
-                $this -> salir();
+            } else {
+                $this->salir();
             }
         } else if ($_SESSION['nivel_usuario'] == 2) {
-            if(isset($_COOKIE[$_SESSION['nombreUsuario']])){
+            $this -> inactividad();
+            if (isset($_COOKIE[$_SESSION['nombreUsuario']])) {
                 return 'menuAdmin.php';
-            }else{
-                $this -> salir();
+            } else {
+                $this->salir();
             }
+        }
+    }
+
+    public function inactividad()
+    {
+        if (($_SESSION['tiempo'] + 10) > time()) {
+            $_SESSION['tiempo'] = time();
+        } else {
+            setcookie($_SESSION['nombreUsuario'], "cookie del usuario: " . $_SESSION['nombreUsuario'], time() - 300);
+            session_destroy();
+            header("location:index.php?ctl=home");
         }
     }
 
@@ -98,6 +111,7 @@ class Controller
                             $_SESSION['nivel_usuario'] = $usuario['nivel_usuario'];
                             $_SESSION['correoElectronico'] = $usuario['correoElectronico'];
                             $_SESSION['fotoPerfil'] = $usuario['fotoPerfil'];
+                            $_SESSION['tiempo'] = time() + 10;
 
                             setcookie($nombreUsuario, "cookie del usuario: " . $nombreUsuario, time() + 300);
 
@@ -158,7 +172,7 @@ class Controller
             cUser($nombreUsuario, "nombreUsuario", $errores);
             if (cfile("imagen",  $errores, Config::$extensionesValidas, 300000, false)) {
                 $fotoPerfil = file_get_contents($_FILES['imagen']['tmp_name']);
-            }else{
+            } else {
                 $fotoPerfil = get_gravatar($correoElectronico);
                 $fotoPerfil = file_get_contents($fotoPerfil);
             }
@@ -212,50 +226,48 @@ class Controller
 
     public function listarEjercicios()
     {
-        
-            try {
-                $m = new Entrenamientos();
-                $params = array(
-                    'nombre' => $m->listarEjercicios(),
-                );
-                if (!$params['nombre'])
-                    $params['mensaje'] = "No hay ejercicios que mostrar.";
-            } catch (Exception $e) {
-                error_log($e->getMessage() . microtime() . PHP_EOL, 3, "../app/log/logExceptio.txt");
-                header('Location: index.php?ctl=error');
-            } catch (Error $e) {
-                error_log($e->getMessage() . microtime() . PHP_EOL, 3, "../app/log/logError.txt");
-                header('Location: index.php?ctl=error');
-            }
 
-            $menu = $this->cargaMenu();
+        try {
+            $m = new Entrenamientos();
+            $params = array(
+                'nombre' => $m->listarEjercicios(),
+            );
+            if (!$params['nombre'])
+                $params['mensaje'] = "No hay ejercicios que mostrar.";
+        } catch (Exception $e) {
+            error_log($e->getMessage() . microtime() . PHP_EOL, 3, "../app/log/logExceptio.txt");
+            header('Location: index.php?ctl=error');
+        } catch (Error $e) {
+            error_log($e->getMessage() . microtime() . PHP_EOL, 3, "../app/log/logError.txt");
+            header('Location: index.php?ctl=error');
+        }
 
-            require __DIR__ . '/../../web/templates/mostrarEjercicios.php';
-        
+        $menu = $this->cargaMenu();
+
+        require __DIR__ . '/../../web/templates/mostrarEjercicios.php';
     }
 
 
     public function verEjercicio()
     {
-            try {
-                if (!isset($_GET['id_ejercicio'])) {
-                    throw new Exception('Página no encontrada.');
-                }
-                $id_ejercicio = recoge('id_ejercicio');
-                $m = new Entrenamientos();
-                $params['ejercicios'] = $m->verEjercicio($id_ejercicio);
-            } catch (Exception $e) {
-                error_log($e->getMessage() . microtime() . PHP_EOL, 3, "../app/log/logExceptio.txt");
-                header('Location: index.php?ctl=error');
-            } catch (Error $e) {
-                error_log($e->getMessage() . microtime() . PHP_EOL, 3, "../app/log/logError.txt");
-                header('Location: index.php?ctl=error');
+        try {
+            if (!isset($_GET['id_ejercicio'])) {
+                throw new Exception('Página no encontrada.');
             }
+            $id_ejercicio = recoge('id_ejercicio');
+            $m = new Entrenamientos();
+            $params['ejercicios'] = $m->verEjercicio($id_ejercicio);
+        } catch (Exception $e) {
+            error_log($e->getMessage() . microtime() . PHP_EOL, 3, "../app/log/logExceptio.txt");
+            header('Location: index.php?ctl=error');
+        } catch (Error $e) {
+            error_log($e->getMessage() . microtime() . PHP_EOL, 3, "../app/log/logError.txt");
+            header('Location: index.php?ctl=error');
+        }
 
-            $menu = $this->cargaMenu();
+        $menu = $this->cargaMenu();
 
-            require __DIR__ . '/../../web/templates/verEjercicio.php';
-        
+        require __DIR__ . '/../../web/templates/verEjercicio.php';
     }
 
 
@@ -285,7 +297,7 @@ class Controller
 
             require __DIR__ . '/../../web/templates/buscarPorNombre.php';
         } else {
-            $this -> salir();
+            $this->salir();
         }
     }
 
@@ -316,7 +328,7 @@ class Controller
 
             require __DIR__ . '/../../web/templates/buscarPorGrupoMuscular.php';
         } else {
-            $this -> salir();
+            $this->salir();
         }
     }
 
@@ -325,7 +337,7 @@ class Controller
         if (isset($_COOKIE[$_SESSION['nombreUsuario']])) {
             return true;
         } else {
-            $this -> salir();
+            $this->salir();
         }
     }
 
@@ -351,7 +363,7 @@ class Controller
 
             require __DIR__ . '/../../web/templates/mostrarMisEjercicios.php';
         } else {
-            $this -> salir();
+            $this->salir();
         }
     }
 
@@ -396,7 +408,6 @@ class Controller
                         echo "!!!Enviado!!!";
                         header('Location: index.php?ctl=inicio');
                     }
-
                 }
             } catch (Exception $e) {
                 error_log($e->getMessage() . microtime() . PHP_EOL, 3, "../app/log/logExceptio.txt");
@@ -410,7 +421,7 @@ class Controller
 
             require __DIR__ . '/../../web/templates/newsletter.php';
         } else {
-            $this -> salir();
+            $this->salir();
         }
     }
 
@@ -466,7 +477,7 @@ class Controller
 
             require __DIR__ . '/../../web/templates/formInsertarEjercicios.php';
         } else {
-            $this -> salir();
+            $this->salir();
         }
     }
 }
